@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- v-model语法糖的实现方式 -->
+    <div id="app">
+        最基本的v-model双向数据绑定11：<input type="text" v-model="demo">{{demo}}
+        <hr>
+        语法糖,v-model其实是一个语法糖22： value加冒号是变量不加冒号是固定的值<input type="text" :value="demo2" @input="yft">{{demo2}}
+        <hr>
+        给一个自定义组件加v-model
+        <div>
+            <my-input v-model="demo3" test="中国人"></my-input>{{demo3}}
+        </div>
+
+        <hr>
+        自定义checkbox组件使用v-model
+        <base-checkbox v-model="demo4"></base-checkbox> {{demo4}}
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 定义一个全局组件单行文本输入狂
+    Vue.component('my-input', {
+        template: `
+                <div>
+                    <input type="text" :value="cao" @input="changeinput"> {{test}} ~~~{{cao}}---
+                </div>
+            
+        `,
+        data() {
+            return {
+                myinput: ''
+            }
+        },
+        model: {
+            prop: 'cao',
+            event: 'gundan'
+        },
+        props: {
+            cao: String,
+            test: String
+        },
+        methods: {
+            changeinput(e) {
+                this.$emit('gundan', e.target.value);
+            }
+        }
+    })
+    // checkbox复选框
+    Vue.component('base-checkbox', {
+        model: {
+            prop: 'hehe',
+            event: 'haha'
+        },
+        props: {
+            hehe: Boolean
+        },
+        template: `
+            <input
+            type="checkbox" :checked="hehe" @change="$emit('haha', $event.target.checked)"
+            >
+        `
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            demo: '',
+            demo2: '',
+            demo3: '我是demo3',
+            demo4: false
+        },
+        methods: {
+            yft(e) {
+                this.demo2 = e.target.value;
+            }
+        },
+    })
+</script>
+
+</html>

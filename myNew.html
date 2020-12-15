@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 手写new原理
+    Function.prototype.myNew = function () {
+        // 声明一个新对象
+        var obj = {};
+        // 获取构造函数
+        var Con = [].shift.call(arguments);
+        // 构造函数执行，同时改变this
+        var res = Con.apply(obj,arguments); // 继承私有属性
+        obj.__proto__ = Con.prototype; // 继承原型上的属性
+        return typeof res === 'object'?res:obj; // 
+    }
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.dns解析目的就是域名->ip地址
+        2.浏览器根据ip地址向服务器发送http请求
+        4.服务器处理http请求，返回给浏览器（html,css,js,img,video）
+        html->dom tree
+        css-> cssom 
+        domtree+cssom->renderTree
+        根据rendertree渲染
+        遇到script,则暂停渲染优先加载并执行js代码，完成再继续，直至把rendertree渲染完成
+
+
+     -->
+     <!-- 
+        为什么把css放在head中？
+        1.如果放在页面最下面，根据渲染过程domtree完了之后页面上加入有一个字体很小的字，css在最下面，css此时才给这个字加样式，字体一下子就变大了
+        为什么script放在底部？
+        1.如果js放在中间，本来渲染了一部分，然后遇到js再去执行js，这个js里面改变dom了，就卡顿了一下，再去执行下面的，把能出来的
+        内容先放出来......
+
+      -->
+      <!-- 
+
+
+        // window.onload  所有的都加载完，包括图片 媒体
+        // domcontentloaded 不包括图片 媒体资源
+       -->
+</body>
+</html>

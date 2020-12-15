@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>kkkkkkkkkkkkkkkkkkkk</h3>
+    <script>
+        alert(document.cookie)
+    </script>
+</body>
+<script>
+    // 一、xss 跨站请求攻击
+    // 1.用户的cookie已经拿到了，恶意用户会把这个cookie发送到自己的服务器，因为cookie经常保存的是一些用户的信息
+    // 可以替换< > 或者去npm官网搜索 xss这个库，用第三方库
+    // 二、xsrf 跨站请求伪造
+    /* 
+    1.你正在购物，看中了某个商品。准备付款，这个商品的id是100
+    2.比如这个网站很烂，付款接口正好是一个get请求xxxxpay？id=100
+    3.你是攻击者，你看中了一个商品id是200
+    4.此时，你正在购物，但是我给你发了一个邮件，标题很吸引人邮件里面有一张图片
+    <img src="xxxx?pay=200"> ,一打开这个邮件，img就会自动发起请求，因为img是可以跨域的，你只要一查看邮件就帮我买了这个商品，即使没有
+    帮助我买，也给这个网站创收了，比如id是200的比id是100的贵很多呢
+    如何防范？
+    1.用post
+    2.密码，短信验证码？token？图片验证码
+    
+    
+    */
+    
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- // 柯里化函数 -->
+    <!-- 
+        基本类型存储在栈内存中
+        如果是引用类型的话，栈内存中存储的是引用地址，堆内存中存储的是真正的数据
+
+
+     -->
+</body>
+<script>
+    // add(4)(5)(6) // 实现4+5+6
+    function add(aaa) { // 闭包的典型应用
+        return function (bbb) {
+            return function (ccc) {
+                return aaa + bbb + ccc;
+            }
+        }
+    }
+    console.log(add(4)(5)(6))
+    var addHalf = add(4)(5);
+    console.log(addHalf(6))
+    // 在上面的基础上如何实现   add(4)(5,6) add(4,5)(6) add(4,5,6) add(4,5,6)(10)
+    // 一定要理解加手写出来
+    function add2() {
+        let args = [...arguments];
+        console.log('args',args)
+        function fn() {
+            console.log('进入fn')
+            var newArgs = args.concat([...arguments]);
+            console.log('newArgs',newArgs)
+            // 递归调用
+            return add2(...newArgs)
+        }
+        console.log('args111',args)
+        fn.toString = function () {
+            return args.reduce((prev, next) => {
+                return prev + next;
+            })
+        }
+        return fn;
+    }
+    // console.log(add2(1,2,3).toString())
+    console.log(add2(1,2)(3)(4).toString())
+</script>
+
+</html>

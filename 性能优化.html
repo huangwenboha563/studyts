@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        一、原则
+        多使用内存，缓存或者其他方法；减少cpu计算量减少网络加载耗时，适用于所有编程的性能优化，空间换时间（比如google浏览器）
+        从何入手
+        1.让加载更快
+        1.1减少资源体积，压缩代码。服务器端口开启gzip压缩
+        1.2减少访问次数，合并代码，ssr服务端渲染，缓存（如何命中缓存）
+        1.3使用cdn，使用更快的网络
+        2.让渲染更快
+        2.1 css head  js body下面
+        2.2 domcontendloade $function
+        2.3 对dom查询进行缓存，频繁dom操作合并到一起
+        2.4 防抖，截流
+      命令1:/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"（这个命令不好使会报错，如果报错尝试使用命令2）
+      命令2:/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"（这是一个脚本，同样可以安装Homebrew）
+
+     -->
+    <!-- 
+
+        缓存
+        1.静态内容家hash后缀，根据文件内容计算hash
+        2.文件内容不变则hash不变，则url不变
+        3.url不变则会自动触发http缓存机制，返回304
+
+
+        cdn
+        1.引入jquery zepto bootsrap 特别是这些静态资源 可以打开www.baidu.com f12看请求 
+
+        ssr
+        服务端渲染将页面和数据包裹在一起返回，也是减少网络请求的一种性能优化，vue和react都是借助node来做
+
+        懒加载
+        图片慢慢的还在，vue-lazy-load，当浏览器判断到浏览器滑动的过程中，如果漏出来了就开启懒加载。怎么判断图片是否漏出屏幕
+
+        缓存dom查询
+        
+      -->
+</body>
+<script>
+    // 缓存dom查询
+    var length = document.getElementsByTagName('p').length;
+    for (var i = 0; i < length; i++) {
+        // 这个性能肯定要比下面的性能好
+    }
+    for(var i = 0; i< document.getElementsByTagName('p').length; i++) {
+
+    }
+</script>
+
+</html>

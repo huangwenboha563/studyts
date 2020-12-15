@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 数组扁平化 [].contact.apply([],)
+    function flatAry(ary) {
+        // 如果isDep是false，说明已经扁平话了。 // 如果是true说明还没有彻底扁平化
+        var aaa = ary.some((item) => {
+            return item instanceof Array;
+        });
+        if (!aaa) {
+            return ary;
+        }
+        var newAry = [].concat.apply([],ary);
+        return flatAry(newAry);
+    }
+    // [1,2,3].concat([4,5,6])
+    // [].concat(4,[5,6]) [1,2,3,4,5,6] 这个是核心！！！！
+    // 如果传递的是[1,2,3]  some的结果是false。说明已经扁平化就直接false了。
+    // 如果传递的是[1,2,3,[4,5]] [].concat.apply([],ary) [1,2,3,4,5]
+</script>
+
+</html>

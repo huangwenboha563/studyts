@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var url = "http://www.baidu.com/index.html?a=1&b=2#/a/b";
+    // 我们在地址栏敲入类似于一个这样的url，让后在控制台打开 console.log(location) 会看到location下面有很多属性
+    // protocol hostname host port pathname search hash(#a/b这里用到的就是这个)
+    // 为什么能用location.hash实现路由呢。根本原因是因为hash变化的时候页面不刷新，这是实现spa的根本原因。但是会有前进后退hash永远不会提交到server端，完全属于前段的东西
+    window.onhashchange = function (event) {
+        console.log(event.oldURL)
+        console.log(event.newURL)
+    }
+    // 监听has变化的事件onhaschange
+
+
+    // 因为单页面应用只用一个html文件
+
+    //  history需要配合后端配置
+
+    // 不然当重新刷新 就会报错404
+</script>
+
+</html>

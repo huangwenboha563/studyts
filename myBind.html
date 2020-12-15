@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // mybind  fn.bind(obj,1,2,3)(666)
+    Function.prototype.myBind = function (context) {
+        /*  */
+        var fn = this;
+        var arg = [...arguments].slice(1);
+        return function () {
+            return fn.apply(context,arg.concat(Array.prototype.slice.call(arguments)))
+        }
+    }
+</script>
+</html>

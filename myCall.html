@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 手写myCall
+    // fn.call(obj,1,2,3) // 最主要的是这两句话 context.fn = this; 给context也就是obj绑定一个this方法，也就是绑定一个fn方法。
+    // 总之就是给obj一个调用fn的功能
+    Function.prototype.myCall = function (context) {
+        context = context || window;
+        context.fn = this; // 因为obj最后要调用this上的方法
+        var arg = [...arguments].slice(1);
+        console.log(arg);
+        var res = context.fn(...arg); // bind和call的唯一的区别就是传递参数的方式不一样。 // var res = context.fn(arg)
+        delete context.fn; // 不要污染原来的obj
+        return res; // 返回结果
+    }
+
+    var obj = {
+        name: 'hwb',
+        age: 18
+    }
+    function fn () {
+        console.log(this.name);
+        console.log(arguments)
+        return '中国人'
+    }
+    fn.myCall(obj,1,2,3);
+</script>
+</html>

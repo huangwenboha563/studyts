@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /**
+     * 深拷贝
+    */
+   var oldObj = {
+       name: {
+           real: 'hah',
+           hobby: [1,2,3]
+       },
+       age: [1,2,3]
+   };
+   var newObj = deepClone(oldObj);
+   oldObj.name.real = 'heh';
+   oldObj.age[0] = 1111;
+   oldObj.name.hobby[0] = 'ccccc'
+   console.log(newObj.name.real);
+   console.log(newObj.age[0]);
+   console.log(newObj.name.hobby[0]);
+   function deepClone(oldObj) {
+        if (typeof oldObj !== 'object') {
+            return oldObj;
+        }
+        var result = {};
+        // if (oldObj instanceof Array) { // 判断是不是数组的作用不？
+        //     result = [];
+        // } else {
+        //     result = {};
+        // }
+        for (var key in oldObj) { // for in 可以遍历对象也可以遍历数组
+            if (oldObj.hasOwnProperty(key)) { // 保证不是原型上的属性和方法
+                result[key] = deepClone(oldObj[key])
+            }
+        }
+        return result;
+   }
+</script>
+</html>

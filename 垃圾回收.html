@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">3</div>
+</body>
+<script>
+    var app = document.getElementById('app')
+    app.remove();
+    // 在控制台里面 app 还能看到app
+    // 1.引用技术法 产生了无数的碎片
+    // 2.标记清楚法
+    // 3.标记整理法
+    // 4.复制整理法
+    // 1.闭包可能造成内存泄漏 2.定时器 3.dom元素的引用
+</script>
+</html>

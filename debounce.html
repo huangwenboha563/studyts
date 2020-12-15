@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="myiNput">
+</body>
+<script>
+    function debounce(fn) {
+        var timer = null;
+        return function () {
+            if (timer) {
+                console.log('清楚了timer')
+                 clearTimeout(timer);
+            }
+            // timer是一直动态会生成的
+            timer = setTimeout(()=>{
+                fn.apply(this,arguments)
+                timer = null;
+            },1000)
+        }
+    }
+    function fn () {
+        console.log(1);
+    }
+    var inputmy = document.getElementById('myiNput')
+    var hh = debounce(fn)
+    inputmy.oninput = function () {
+        hh();
+    }
+</script>
+</html>

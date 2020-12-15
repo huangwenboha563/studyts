@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 方法1.最传统的
+    // 方法2.es6的
+    
+    function uniqueAry(ary) {
+        var newAry = [];
+        ary.forEach(element => {
+            if (newAry.indexOf(element) < 0 ) {
+                newAry.push(element)
+            }
+        });
+        return newAry;
+    }
+</script>
+<script>
+    function uniqueAryEs6 (ary) {
+        var newAry = new Set(ary);
+        return [...newAry]; // return Array.form(newAry);
+    }
+    function uniqueAryEs62 (ary) {
+        
+        return [...new Set(ary)];
+    }
+</script>
+</html>
