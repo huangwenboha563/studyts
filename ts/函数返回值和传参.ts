@@ -39,3 +39,4 @@ function add(x: number, y: number, ...z: number[]): void {
 add(1,2)
 add(1,2,3,4,5,6)
 add(1,2,3)
+// 函数传参问题...剩余参数举例
